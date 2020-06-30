@@ -24,7 +24,7 @@ namespace Threading
             thread1.Join();
             thread2.Join();
             Console.WriteLine($"Time elapsed {stopWatch.ElapsedMilliseconds}");
-
+            PCounting(3000);
             //stopWatch = Stopwatch.StartNew();
             //thread1 = new Thread(threadingDelegate);
             //thread2 = new Thread(threadingDelegate2);
@@ -44,6 +44,14 @@ namespace Threading
                 Console.WriteLine($"Current count {i}\nCurrent Thread: {Thread.CurrentThread.Name}, Status: {Thread.CurrentThread.ThreadState}");
                 Thread.Sleep(milisecondsAmount);
             }
+        }
+
+        private static void PCounting(int milisecondsAmount)
+        {
+            Parallel.For(1, 11, (index) =>
+             {
+                 Console.WriteLine($"Current Index {index}");
+             });
         }
     }
 }
